@@ -130,10 +130,10 @@ ll
           <button class="btn btn-sm btn-outline-primary me-2">
             <i class="fa fa-eye"></i>
           </button>
-          <button class="btn btn-sm btn-outline-warning me-2">
+          <button (click)="myUpdtateModal.showModal(cat)" class="btn btn-sm btn-outline-warning me-2">
             <i class="fa fa-edit"></i>
           </button>
-          <button class="btn btn-sm btn-outline-danger">
+          <button (click)="myDeleteModal.showModal(cat)" class="btn btn-sm btn-outline-danger">
             <i class="fa fa-trash"></i>
           </button>
         </div>
