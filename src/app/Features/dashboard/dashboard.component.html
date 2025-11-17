@@ -7,7 +7,8 @@
 <div class="container-fluid mt-4">
   <div class="row g-4">
 
-    <div class="col-md-3 col-sm-6">
+    @if (token.userGroup !=='SystemUser') {
+       <div class="col-md-3 col-sm-6">
       <div class="dashboard-card">
         <div class="icon-box bg-primary">
           <i class="fa-solid fa-users"></i>
@@ -16,8 +17,7 @@
         <span class="number">{{ usersList.length }}</span>
       </div>
     </div>
-
-    <div class="col-md-3 col-sm-6">
+     <div class="col-md-3 col-sm-6">
       <div class="dashboard-card">
         <div class="icon-box bg-success">
           <i class="fa-solid fa-utensils"></i>
@@ -46,14 +46,18 @@
         <span class="number">{{ categoriesList.length }}</span>
       </div>
     </div>
+    }
+
+
+
 
   </div>
 </div>
 
 <!-- Charts -->
 <div class="container-fluid charts-wrapper">
-
-  @if (series.length == 2) {
+@if (token.userGroup !=='SystemUser') {
+ @if (series.length == 2) {
     <div class="apexchart-container">
       <h5 class="chart-title">Users vs Admins</h5>
       <apx-chart
@@ -79,5 +83,7 @@
       </apx-chart>
     </div>
   }
+}
+
 
 </div>
