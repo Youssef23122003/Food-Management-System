@@ -1,0 +1,103 @@
+<div class="container recipe-header p-4">
+  <div class="row">
+    <div class="col-md-12 d-flex align-items-center">
+      <div>
+        <h5>Fill the Recipes !</h5>
+        <p>
+          you can now fill the meals easily using the table and form,
+          <br /> click here and sill it with the table !
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4 d-flex justify-content-end align-items-center">
+      <button class="btn btn-success">All Recipes <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+    </div>
+  </div>
+</div>
+
+<div class="container pt-4 recipes-data">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-12">
+      <form [formGroup]="reciepForm" (ngSubmit)="recipe ? submitUpdateRecipe() : submitAddRecipe()" class="recipe-form" >
+        <div class="input-group mb-3">
+          <input formControlName="name" type="text" class="form-control" placeholder="Recipe Name" aria-label="Recipe Name" aria-describedby="basic-addon1" />
+          @let nameControl = reciepForm.get('name');
+        </div>
+        @if (nameControl?.errors && nameControl?.touched) {
+          <p class="mt-2 text-danger">Recipe Name is Required</p>
+        }
+
+        <select formControlName="tagId" class="form-select mb-3" >
+          <option [ngValue]="null" disabled>Choose tag</option>
+          @for (tag of tagsList; track tag.id) {
+            <option [value]="tag.id">{{tag.name}}</option>
+          }
+        </select>
+          @let tagControl = reciepForm.get('tagId');
+
+        @if (tagControl?.errors && tagControl?.touched) {
+          <p class="mt-2 text-danger">Recipe Tag is Required</p>
+        }
+
+
+        <div class="input-group mb-3">
+          <input formControlName="price" type="number" class="form-control border-end-0" placeholder="Recipe Price" aria-label="Recipe Price" aria-describedby="basic-addon1" />
+          <div class="input-group-append">
+            <label class="input-group-text" for="inputGroupSelect02">EGP</label>
+          </div>
+        </div>
+          @let priceControl = reciepForm.get('price');
+
+        @if (priceControl?.errors && priceControl?.touched) {
+          <p class="mt-2 text-danger">Recipe Price is Required</p>
+        }
+
+
+        <select formControlName="categoriesIds" class="form-select mb-3" >
+          <option [ngValue]="null" disabled>Choose category</option>
+          @for (cat of catgoriesList; track cat.id) {
+            <option [value]="cat.id">{{cat.name}}</option>
+          }
+        </select>
+          @let catControl = reciepForm.get('categoriesIds');
+
+        @if (catControl?.errors && catControl?.touched) {
+          <p class="mt-2 text-danger">Recipe Category is Required</p>
+        }
+
+
+        <div class="mb-3">
+          <textarea formControlName="description" class="form-control" rows="5" placeholder="Description"></textarea>
+        </div>
+        @let descControl = reciepForm.get('description');
+
+        @if (descControl?.errors && descControl?.touched) {
+          <p class="mt-2 text-danger">Recipe Describtion is Required</p>
+        }
+
+
+
+        <div class="input-group border-dashed-green mb-3 img-iput">
+          <div class="w-100  flex-column d-flex p-4 text-center drop-area">
+            <div class="row justify-content-center"><i class="fa fa-upload" aria-hidden="true"></i></div>
+
+
+            <input (change)="onFileSelected($event)" type="file" hidden id="imageUpload" formControlName="recipeImage" />
+
+            <label for="imageUpload" class="form-label flex flex-column" style="cursor: pointer;">
+              Drag & Drop or <strong class="text-success">Choose an Item Image</strong> to Upload
+            </label>
+          </div>
+        </div>
+
+        <div class="btns-recipes d-flex justify-content-end py-5 mt-3">
+          <a class="btn me-4 btn-outline-success text-black px-3 py-2" href="/dashboard/recipes">Cancel</a>
+
+          <button class="btn bg-success text-white px-3 py-2" type="submit">@if (loading) {
+     <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+  }Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

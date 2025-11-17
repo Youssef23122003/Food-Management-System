@@ -5,7 +5,7 @@
   "projects": {
     "Food-Application": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {"@schematics/angular:component": {"type": "component","skipTests": true},"@schematics/angular:service": {"type": "service"},"@schematics/angular:interface": {"type": "interface"},"@schematics/angular:interceptor": {"skipTests": true}},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -82,11 +82,19 @@
               }
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "src/styles.css"
+            ],
+            "scripts": [
+              "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "2f81511a-eb48-401a-a013-52e0916f43c8"
   }
 }

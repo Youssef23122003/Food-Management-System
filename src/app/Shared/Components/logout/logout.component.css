@@ -1,0 +1,24 @@
+/* زيادة z-index للـ Modal لضمان ظهوره فوق كل شيء */
+.modal.fade.show.d-block {
+  animation: fadeIn 0.25s ease-in-out;
+  /* ✨ هذا هو التعديل الأهم للـ Modal نفسه ✨ */
+  z-index: 9999;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* زيادة z-index للخلفية/Overlay، مع التأكد من أنها أقل من الـ Modal بقليل */
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  /* ✨ هذا هو التعديل الأهم للخلفية ✨ */
+  z-index: 9998;
+}

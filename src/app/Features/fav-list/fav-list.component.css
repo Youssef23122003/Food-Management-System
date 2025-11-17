@@ -1,0 +1,67 @@
+/* ===== Card Styling ===== */
+.fav-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.fav-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Favourite Button ===== */
+.fav-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  color: #ff4d4d;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.fav-btn:hover {
+  background-color: #ff4d4d;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.fav-btn i {
+  font-size: 1.2rem;
+}
+
+/* ===== Card Image ===== */
+.card-img-top {
+  height: 300px;
+  object-fit: contain;
+  width: 100%;
+}
+
+/* ===== Text Truncate (multi-line) ===== */
+.text-truncate-2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* ===== No Data Section ===== */
+.no-data-img {
+  width: 160px;
+  opacity: 0.85;
+}
+
+/* ===== Loader ===== */
+.spinner-border {
+  color: #007bff !important;
+}

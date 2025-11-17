@@ -1,0 +1,15 @@
+.nav-notification{
+  cursor: pointer;
+}
+.notif-dot{
+  position: absolute;
+  top: 1px;
+  left: 20px; /* يتحكم في موقع النقطه بالنسبة للأيقونه */
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background: #dc3545; /* أحمر */
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(220,53,69,0.08);
+}

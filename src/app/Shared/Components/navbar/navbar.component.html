@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+  <div class="container-fluid gap-2 d-flex align-items-center">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav d-flex align-items-center gap-4 ms-auto mb-2 mb-lg-0">
+        <li class="nav-item d-flex align-items-center gap-2">
+          <img class="nav-user-img" [src]="'/images/Ellipse 235.png'" alt="user" />
+          <span class="nav-username">{{token.userName}}</span>
+        </li>
+
+        <li class="nav-item">
+          <a routerLink="profile" class="nav-link d-flex align-items-center gap-2 Logooo" href="/dashboard/profile">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <span>My Profile</span>
+          </a>
+        </li>
+
+        <li class="nav-item position-relative nav-notification">
+          <i class="fa fa-bell fa-lg"></i>
+          <span class="notif-dot"></span>
+        </li>
+        <li>
+        <a (click)="mylogoutModal.showModal()" class="sidebar-link text-black  d-block py-2">
+          <i class="fa fa-right-from-bracket me-2"></i>
+
+        </a>
+      </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<app-logout #mylogoutModal></app-logout>

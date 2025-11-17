@@ -1,0 +1,59 @@
+.table-responsive table {
+border-radius: 8px;
+overflow: hidden;
+}
+
+
+.card {
+border: 0;
+}
+
+
+/* small visual tweaks for buttons */
+.btn-outline-warning {
+border-color: rgba(255, 193, 7, 0.25);
+}
+
+
+/* responsive spacing */
+@media (max-width: 767px) {
+.header-section { padding: 1rem; }
+}
+
+
+/* pagination */
+.pagination .page-item .page-link {
+  min-width: 40px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* responsive niceties */
+@media (max-width: 767.98px) {
+  .header-section .header-inner { padding: 12px; }
+  .title { font-size: 1.25rem; }
+  .subtitle { display: none; }
+}
+
+/* small helper for loader placeholder */
+.loader-placeholder {
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.pagination .page-item.active .page-link {
+  background-color: rgb(15, 204, 15);
+  border-color: rgb(15, 204, 15);
+  color: white;
+}
+
+.pagination .page-link {
+  color: rgb(15, 204, 15);
+  border-radius: 8px;
+  margin: 0 3px;
+  transition: all 0.2s ease;
+}

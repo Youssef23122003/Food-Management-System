@@ -1,0 +1,36 @@
+@if (open) {
+<div class="modal fade show d-block custom-modal" id="detailsModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title fw-bold"><i class="fa-solid fa-utensils me-2 text-warning"></i> Recipe Details</h5>
+        <button (click)="closeModal()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body px-4 pb-4 pt-2">
+        <div class="text-center mb-4">
+          @if (recipe.imagePath) {
+        <img [src]="imgPath+recipe.imagePath" alt="recipe" class="rounded shadow border details-img" />
+          }
+          @else {
+             <img src="/images/white-dish-plate-isolated-on-260nw-1271426587.webp" alt="recipe" class="rounded shadow border details-img">
+          }
+
+        </div>
+        <div class="d-flex flex-column gap-3 details-info">
+          <p class="mb-0"><strong>ID:</strong> <span class="text-muted">{{recipe.id}}</span></p>
+          <p class="mb-0"><strong>Name:</strong> <span class="text-muted">{{recipe.name}}</span></p>
+          <p class="mb-0"><strong>Description:</strong> <span class="text-muted">{{recipe.description}}</span></p>
+          <p class="mb-0"><strong>Price:</strong> <span class="text-muted">{{recipe.price}} $</span></p>
+          <p class="mb-0"><strong>Tag:</strong> <span class="text-muted">{{recipe.tag.name}}</span></p>
+          <p class="mb-0"><strong>Category:</strong> <span class="text-muted">{{recipe.category[0].name}}</span></p>
+        </div>
+      </div>
+      <div class="modal-footer border-0 px-4 pb-4">
+        <button type="button" (click)="closeModal()" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop fade show"></div>
+}
+

@@ -1,0 +1,80 @@
+@if (open) {
+<div class="modal fade show d-block custom-modal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-sm-down">
+    <div class="modal-content shadow-lg border-0 rounded-4">
+
+      <!-- Header -->
+      <div class="modal-header border-0 pb-0">
+        <h5 class="modal-title fw-bold d-flex align-items-center gap-2">
+          <i class="fas fa-user text-primary fs-4"></i>
+          User Details
+        </h5>
+        <button (click)="closeModal()" type="button" class="btn-close"></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+
+        <!-- User Image -->
+        <div class="text-center mb-4">
+          @if (user.imagePath)
+          {
+            <img [src]="imgPath+user.imagePath"
+                 class="rounded-circle shadow-sm user-img" />
+          }
+          @else {
+            <img src="/images/user-profile-icon-vector-avatar-600nw-2247726673.webp"
+                 class="rounded-circle shadow-sm user-img" />
+          }
+        </div>
+
+        <!-- User Details -->
+        <ul class="list-group list-group-flush px-2">
+
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span><i class="fas fa-id-badge me-2 text-primary"></i><strong>ID</strong></span>
+            <span>{{user.id}}</span>
+          </li>
+
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span><i class="fas fa-user me-2 text-primary"></i><strong>Name</strong></span>
+            <span>{{user.userName}}</span>
+          </li>
+
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span><i class="fas fa-envelope me-2 text-primary"></i><strong>Email</strong></span>
+            <span>{{user.email}}</span>
+          </li>
+
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span><i class="fas fa-globe me-2 text-primary"></i><strong>Country</strong></span>
+            <span>{{user.country}}</span>
+          </li>
+
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span><i class="fas fa-phone me-2 text-primary"></i><strong>Phone</strong></span>
+            <span>{{user.phoneNumber}}</span>
+          </li>
+
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span><i class="fas fa-user-shield me-2 text-primary"></i><strong>Role</strong></span>
+            <span>{{user.group.name}}</span>
+          </li>
+
+        </ul>
+
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer border-0 pt-0">
+        <button (click)="closeModal()" class="btn btn-secondary rounded-3 px-4">
+          Close
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop fade show"></div>
+}

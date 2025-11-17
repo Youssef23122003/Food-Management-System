@@ -1,0 +1,85 @@
+<aside >
+
+<div class="sidebar-container d-flex min-vh-100">
+
+  <div
+    class="bg-dark border-end shadow sidebar"
+    [ngClass]="{ collapsed: isCollapsed }"
+  >
+
+    <div (click)="toggleSidebar()" class="d-flex align-items-start justify-content-center py-1 cursor-pointer">
+      <img
+        class="sidebar-logo"
+        [src]="'/images/3.png'" [style.width]="isCollapsed ? '40px' : '100px'" alt="Sidebar Logo"
+      />
+    </div>
+
+    <ul class="list-unstyled ps-3 ">
+
+      <li>
+        <a routerLink="/dashboard" routerLinkActive="active" class="sidebar-link d-block text-white py-2">
+          <i class="fa fa-home me-2"></i>
+          <span *ngIf="!isCollapsed">Home</span>
+        </a>
+      </li>
+
+       @if (token.userGroup !== 'SystemUser') {
+         <li>
+        <a routerLink="/users-list" routerLinkActive="active" class="sidebar-link d-block text-white py-2">
+          <i class="fa fa-users me-2"></i>
+          <span *ngIf="!isCollapsed">Users</span>
+        </a>
+      </li>
+
+
+      <li>
+        <a routerLink="/categories-list" routerLinkActive="active" class="sidebar-link d-block text-white py-2">
+          <i class="fa fa-grip me-2"></i>
+          <span *ngIf="!isCollapsed">Categories</span>
+        </a>
+      </li>
+      }
+
+       <li>
+        <a routerLink="/recipes-list" routerLinkActive="active" class="sidebar-link d-block text-white py-2">
+          <i class="fa fa-utensils me-2"></i>
+          <span *ngIf="!isCollapsed">Recipes</span>
+        </a>
+      </li>
+
+
+
+      @if (token.userGroup !=='SuperAdmin') {
+         <li>
+        <a routerLink="/fav-list" routerLinkActive="active" class="sidebar-link d-block text-white py-2">
+          <i class="fa fa-heart me-2"></i>
+          <span *ngIf="!isCollapsed">Favs</span>
+        </a>
+      </li>
+      }
+
+
+
+      <li>
+        <a routerLink="/change-password" class="sidebar-link d-block text-white py-2">
+          <i class="fa fa-key me-2"></i>
+          <span *ngIf="!isCollapsed">Change Password</span>
+        </a>
+      </li>
+
+      <!-- <li>
+        <a (click)="mylogoutModal.showModal()" class="sidebar-link  d-block text-white py-2">
+          <i class="fa fa-right-from-bracket me-2"></i>
+          <span>Logout</span>
+        </a>
+      </li> -->
+    </ul>
+  </div>
+</div>
+</aside>
+
+<app-logout #mylogoutModal></app-logout>
+
+
+
+

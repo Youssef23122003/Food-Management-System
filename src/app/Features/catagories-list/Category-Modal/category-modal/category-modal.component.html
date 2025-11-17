@@ -1,0 +1,45 @@
+@if (openModalCat) {
+  <div class="modal fade show d-block" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content shadow-lg border-0 rounded-3">
+
+        <!-- Header -->
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title fw-semibold">Add Category</h5>
+          <button type="button" class="btn-close btn-close-white" (click)="closeModal()"></button>
+        </div>
+
+        <!-- Body -->
+        <div class="modal-body p-4">
+          <form [formGroup]="addCategoryForm" (ngSubmit)="addCategoryItem()" novalidate>
+
+            <label for="CategoryName" class="form-label fw-medium">Category Name</label>
+            <input
+              formControlName="name"
+              id="CategoryName"
+              placeholder="Enter category name"
+              class="form-control form-control-lg"
+              type="text"
+            />
+
+            @let nameControl = addCategoryForm.get('name');
+            @if (nameControl?.errors && nameControl?.touched) {
+              <p class="text-danger mt-2 small mb-0">Category Name is required</p>
+            }
+
+            <button type="submit" class="btn btn-success w-100 mt-4 d-flex align-items-center justify-content-center gap-2">
+              @if (loading) {
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              }
+              <span>Add Category</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Overlay -->
+  <div class="modal-backdrop fade show"></div>
+}

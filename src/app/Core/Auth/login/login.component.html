@@ -1,0 +1,106 @@
+<section
+  class="auth-container"
+
+>
+  <div class="container-fluid bg-overlay">
+    <div class="row vh-100 justify-content-center align-items-center">
+      <div class="col-md-5 bg-white rounded-3 px-5 py-4">
+        <!-- Logo -->
+        <div class="logo-container text-center">
+          <img src='/images/4 3.png' alt="food-logo" class="w-50" />
+        </div>
+
+
+    <!-- Title -->
+    <div class="title my-3">
+      <h5>Log In</h5>
+      <span class="text-muted">
+        Welcome Back! Please enter your details
+      </span>
+    </div>
+
+    <!-- Form -->
+    <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+      <!-- Email -->
+      <div class="input-group mb-3">
+        <span class="input-group-text">
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+        </span>
+        @let emailControl = loginForm.get('email');
+        <input
+        formControlName="email"
+
+          type="email"
+          class="form-control"
+          placeholder="Email"
+          aria-label="Email"
+        />
+      </div>
+      @if (emailControl?.errors && emailControl?.touched) {
+        @if (emailControl?.getError('required')) {
+           <p class="mt-2 text-danger">Email is required</p>
+        }
+        @if (emailControl?.getError('email')) {
+           <p class="mt-2 text-danger">Email is not valid</p>
+        }
+
+      }
+      <!-- Password -->
+      <div class="input-group mb-3">
+        <span class="input-group-text">
+          <i class="fa fa-lock" aria-hidden="true"></i>
+        </span>
+        @let passwordControl = loginForm.get('password');
+        <input
+        formControlName="password"
+          [type]="showPassword ? 'text' : 'password'"
+          class="form-control"
+          placeholder="Password"
+          aria-label="Password"
+        />
+        <button
+          type="button"
+          class="btn eye-border btn-outline-secondary"
+          (click)="togglePassword()"
+        >
+          <i
+            class="fa-solid"
+            [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
+          ></i>
+        </button>
+      </div>
+       @if (passwordControl?.errors && passwordControl?.touched) {
+        @if (passwordControl?.getError('required')) {
+           <p class="mt-2 text-danger">Password is required</p>
+        }
+        @if (passwordControl?.getError('pattern')) {
+           <p class="mt-2 text-danger">Password Must Have uppercase,lowercase,special charcters,numbers</p>
+        }
+
+      }
+
+      <!-- Links -->
+      <div class="d-flex justify-content-between mb-3">
+        <a routerLink="/register" class="text-black text-decoration-none">
+          Register
+        </a>
+        <a routerLink="/forget-password" class="text-success text-decoration-none">
+          Forget Password
+        </a>
+      </div>
+
+      <!-- Button -->
+     <button class="btn btn-success w-100" type="submit">
+  Login @if (loading) {
+     <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+  }
+
+</button>
+    </form>
+  </div>
+</div>
+
+
+  </div>
+</section>
+

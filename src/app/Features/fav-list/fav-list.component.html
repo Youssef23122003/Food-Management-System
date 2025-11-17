@@ -1,0 +1,62 @@
+<app-header
+  [title]="'Favourite List'"
+  [describtion]="'You can now add your items that any user can order it from the Application and you can edit'"
+  [image]="'/images/header.png'"
+></app-header>
+
+<app-fav-delete-modal #myDeleteModal></app-fav-delete-modal>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <!-- Loader -->
+    @if (loading) {
+      <div class="d-flex justify-content-center align-items-center ">
+       <app-loader></app-loader>
+      </div>
+    } @else {
+      <!-- Grid of cards -->
+      @if (favlist.length > 0) {
+        <div class="row g-4">
+          @for (fav of favlist; track fav?.id) {
+            <div class="col-xl-3 col-lg-4 col-md-6">
+              <div class="card fav-card border-0 shadow-sm h-100">
+                <div class="position-relative">
+                  <img
+                    [src]="pathImg + fav?.recipe?.imagePath || '/images/placeholder.png'"
+                    [alt]="fav?.recipe?.name || 'Recipe Image'"
+                    class="card-img-top rounded-top"
+                  />
+
+                  <button
+                    type="button"
+                    class="btn fav-btn"
+                    aria-label="remove favorite"
+                    title="Remove from favourites"
+                    (click)="myDeleteModal.showModal(fav)"
+                  >
+                    <i class="fa-solid fa-heart"></i>
+                  </button>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title text-truncate mb-2">{{ fav?.recipe?.name || 'No Name' }}</h5>
+                  <p class="card-text text-muted small mb-0 text-truncate-2">
+                    {{ fav?.recipe?.description || 'No Description' }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      } @else {
+        <!-- No data -->
+        <div class="col-12 text-center py-5">
+          <img src="assets/images/no-data.svg" alt="No data" class="no-data-img mb-3" />
+          <h5 class="fw-semibold mb-1">No favourites yet</h5>
+          <p class="text-muted small mb-0">
+            You don't have any favourite items right now.
+          </p>
+        </div>
+      }
+    }
+  </div>
+</div>

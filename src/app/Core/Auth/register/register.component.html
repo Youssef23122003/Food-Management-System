@@ -1,0 +1,195 @@
+<section
+  class="auth-container"
+
+>
+  <div class="container-fluid bg-overlay">
+    <div class="row vh-100 justify-content-center align-items-center">
+      <div class="col-md-6 bg-white rounded-3 px-5 py-4">
+        <!-- Logo -->
+        <div class="logo-container text-center">
+          <img src="/images/4 3.png" alt="food-logo" class="w-50" />
+        </div>
+
+
+    <!-- Title -->
+    <div class="title my-3">
+      <h5>Register</h5>
+      <span class="text-muted">
+        Welcome Back! Please enter your details
+      </span>
+    </div>
+
+    <!-- Form -->
+    <form [formGroup]="registerForm" (ngSubmit)="submitRegister()">
+      <div class="row">
+        <!-- Left column -->
+        <div class="col-12 col-md-6">
+          <!-- Username -->
+          <div class="input-group mb-3">
+            <span class="input-group-text">
+              <i class="fa-solid fa-circle-user"></i>
+            </span>
+             @let userNameControl = registerForm.get('userName');
+            <input
+            formControlName="userName"
+              type="text"
+              class="form-control"
+              placeholder="UserName"
+            />
+          </div>
+          @if (userNameControl?.errors && userNameControl?.touched) {
+          @if (userNameControl?.getError('required')) {
+            <p class="mt-2 text-danger">Username is required</p>
+          }}
+          <!-- Country -->
+          <div class="input-group mb-3">
+            <span class="input-group-text">
+              <i class="fa-solid fa-earth-africa"></i>
+            </span>
+             @let countryControl = registerForm.get('country');
+            <input
+            formControlName="country"
+              type="text"
+              class="form-control"
+              placeholder="Country"
+            />
+          </div>
+           @if (countryControl?.errors && countryControl?.touched) {
+          @if (countryControl?.getError('required')) {
+            <p class="mt-2 text-danger">Country is required</p>
+          }}
+
+          <!-- Password -->
+          <div class="input-group mb-3">
+            <span class="input-group-text">
+              <i class="fa fa-key"></i>
+            </span>
+            <input
+            formControlName="password"
+              [type]="showPassword ? 'text' : 'password'"
+              class="form-control"
+              placeholder="Password"
+            />
+            <button
+              type="button"
+              class="btn eye-border btn-outline-secondary"
+              (click)="togglePassword()"
+            >
+              <i
+                class="fa-solid"
+                [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
+              ></i>
+            </button>
+          </div>
+           @let passwordControl = registerForm.get('password');
+         @if (passwordControl?.errors && passwordControl?.touched) {
+        @if (passwordControl?.getError('required')) {
+           <p class="mt-2 text-danger">Password is required</p>
+        }
+        @if (passwordControl?.getError('pattern')) {
+           <p class="mt-2 text-danger">Password Must Have uppercase,lowercase,special charcters,numbers</p>
+        }}
+        </div>
+
+
+        <!-- Right column -->
+        <div class="col-12 col-md-6">
+          <!-- Email -->
+          <div class="input-group mb-3">
+            <span class="input-group-text">
+              <i class="fa-solid fa-envelope"></i>
+            </span>
+            <input
+            formControlName="email"
+              type="email"
+              class="form-control"
+              placeholder="Enter your E-mail"
+            />
+          </div>
+           @let emailControl = registerForm.get('email');
+         @if (emailControl?.errors && emailControl?.touched) {
+        @if (emailControl?.getError('required')) {
+           <p class="mt-2 text-danger">Email is required</p>
+        }
+        @if (emailControl?.getError('email')) {
+           <p class="mt-2 text-danger">Enter A Vaild Email</p>
+        }}
+
+          <!-- Phone -->
+          <div class="input-group mb-3">
+            <span class="input-group-text">
+              <i class="fa-solid fa-phone"></i>
+            </span>
+            <input
+            formControlName="phoneNumber"
+              type="tel"
+              class="form-control"
+              placeholder="Phone Number"
+            />
+          </div>
+           @let phoneMumberControl = registerForm.get('phoneNumber');
+         @if (phoneMumberControl?.errors && phoneMumberControl?.touched) {
+        @if (phoneMumberControl?.getError('required')) {
+           <p class="mt-2 text-danger">Phone Number is required</p>
+        }
+        @if (phoneMumberControl?.getError('pattern')) {
+           <p class="mt-2 text-danger">Accept only Egypt numbers</p>
+        }}
+
+          <!-- Confirm Password -->
+          <div class="input-group mb-3">
+            <span class="input-group-text">
+              <i class="fa fa-key"></i>
+            </span>
+            <input
+            formControlName="confirmPassword"
+              [type]="showConfirmPassword ? 'text' : 'password'"
+              class="form-control"
+              placeholder="Confirm Password"
+            />
+            <button
+              type="button"
+              class="btn eye-border btn-outline-secondary"
+              (click)="toggleConfirmPassword()"
+            >
+              <i
+                class="fa-solid"
+                [ngClass]="
+                  showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'
+                "
+              ></i>
+            </button>
+          </div>
+          @let confirmPasswordControl = registerForm.get('confirmPassword');
+         @if (confirmPasswordControl?.errors && confirmPasswordControl?.touched) {
+        @if (confirmPasswordControl?.getError('required')) {
+           <p class="mt-2 text-danger">confirmPassword is required</p>
+        }
+        @if (confirmPasswordControl?.getError('mismatch')) {
+           <p class="mt-2 text-danger">Please confirm your password</p>
+        }
+      }
+
+        </div>
+      </div>
+
+      <!-- Login link -->
+      <div class="d-flex justify-content-end mb-3">
+        <a routerLink="/login" class="text-decoration-none">
+          Already have an account? Login
+        </a>
+      </div>
+
+      <!-- Button -->
+      <button class="btn btn-success w-100" type="submit">
+        Register @if (loading) {
+     <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+  }
+      </button>
+    </form>
+  </div>
+</div>
+
+  </div>
+</section>
+
