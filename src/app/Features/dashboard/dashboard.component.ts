@@ -101,8 +101,12 @@ export class DashboardComponent {
   ngOnInit(): void {
     this.token = this.authService.decodeToken();
 
-    this.getAllusers(1040);
-    this.loadDashboardCounts();
+
+    if (this.token.userGroup !== 'SystemUser') {
+      this.getAllusers(1040);
+      this.loadDashboardCounts();
+    }
+
   }
 
   // Load all chart data
